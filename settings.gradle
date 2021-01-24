@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "mist_wayfinding_v2"
