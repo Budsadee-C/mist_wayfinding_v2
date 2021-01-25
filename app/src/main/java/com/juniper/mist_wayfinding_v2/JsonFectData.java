@@ -53,12 +53,11 @@ public class JsonFectData extends AsyncTask<Void, Void, Void> {
         HttpURLConnection httpsURLConnection = null;
 
         try {
-            //URL url = new URL("https://api.mist.com/api/v1/sites/7bf7d46b-ebf7-4bfc-b3c8-47f5ca784e1f/zones"); //JNPR
-            URL url = new URL("https://api.mist.com/api/v1/sites/93c9f1da-c1de-4db2-b7e5-301114f25e80/zones"); //PPLUS
+            URL url = new URL("xxxxxxxxx"); //rest api to fect zone
             httpsURLConnection =(HttpURLConnection) url.openConnection();
 
             httpsURLConnection.setRequestMethod("GET");
-            httpsURLConnection.setRequestProperty("Authorization", "Token h1bloiMLLduKqF1HeRWoIDrXHhD3RPIecoFSYy89rYccpGHieEkIPpX3i2SDecy5RUDs4OXmkUD5wWh1va3TpRguctYnjaPt");
+            httpsURLConnection.setRequestProperty("Authorization", "Token xxxxxxxxxxxxx"); // token
             httpsURLConnection.setRequestProperty("Content-Type", "application/json");
             httpsURLConnection.connect();
 
@@ -77,8 +76,7 @@ public class JsonFectData extends AsyncTask<Void, Void, Void> {
             {
                 zone_object = Array_zone.getJSONObject(i);
 
-                //if(zone_object.getString("map_id").toString().equals("d25f5676-cb71-4519-b9e2-4c267cbdf9a4")) // JNPR
-                if(zone_object.getString("map_id").toString().equals("593cbfa7-4ac8-4ffb-a712-982f1ec77dca")) //PPlus
+                if(zone_object.getString("map_id").toString().equals("xxxxxx")) //map_id
                 {
                     zone.add((String) zone_object.getString("name"));
                     Array_vertical = new JSONArray(zone_object.get("vertices").toString());
@@ -88,8 +86,6 @@ public class JsonFectData extends AsyncTask<Void, Void, Void> {
                         zone_vertical_y.add((Double) vertical_object.getDouble("y"));
                     }
                 }
-
-                //Array_vertical = zone_object.optJSONArray("vertices");
             }
             bufferedReader.close();
             httpsURLConnection.disconnect();
@@ -129,12 +125,11 @@ public class JsonFectData extends AsyncTask<Void, Void, Void> {
         HttpURLConnection httpsURLConnection = null;
         data = "";
         try {
-            //URL url = new URL("https://api.mist.com/api/v1/sites/7bf7d46b-ebf7-4bfc-b3c8-47f5ca784e1f/maps"); //JNPR
-            URL url = new URL("https://api.mist.com/api/v1/sites/93c9f1da-c1de-4db2-b7e5-301114f25e80/maps"); // PPLUS
+            URL url = new URL("xxxxxx"); //rest api to fect map
             httpsURLConnection =(HttpURLConnection) url.openConnection();
 
             httpsURLConnection.setRequestMethod("GET");
-            httpsURLConnection.setRequestProperty("Authorization", "Token h1bloiMLLduKqF1HeRWoIDrXHhD3RPIecoFSYy89rYccpGHieEkIPpX3i2SDecy5RUDs4OXmkUD5wWh1va3TpRguctYnjaPt");
+            httpsURLConnection.setRequestProperty("Authorization", "Token xxxxxx");
             httpsURLConnection.setRequestProperty("Content-Type", "application/json");
             httpsURLConnection.connect();
 
@@ -156,8 +151,7 @@ public class JsonFectData extends AsyncTask<Void, Void, Void> {
             for(int i =0; i<Array_map.length();i++)
             {
                 map_object = Array_map.getJSONObject(i);
-                //if(map_object.getString("id").toString().equals("d25f5676-cb71-4519-b9e2-4c267cbdf9a4")) //JNPR
-                if(map_object.getString("id").toString().equals("593cbfa7-4ac8-4ffb-a712-982f1ec77dca")) //PPlus
+                if(map_object.getString("id").toString().equals("xxxxxxxxx")) // map_id
                 {
                     map.add((String) map_object.getString("name"));
                     way_str += map_object.get("wayfinding_path").toString();
