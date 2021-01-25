@@ -27,8 +27,7 @@ public class HomeFragment extends Fragment {
     private static final String TOKEN_PREF_KEY_NAME = "sdkToken";
     public static final String TAG = HomeFragment.class.getSimpleName();
     // you can replace this text with you sdk token
-    //public static String sdkToken = "PbofEdcxGCfVa25dfQbIahbrTCpQIkUH"; //JNPR mobile token
-    public static String sdkToken = "PkmQ7xpa0j9s6laJaAMbvnAM1gszO8xO"; // PPLUS mobile token
+    public static String sdkToken = "xxxxxxxxxxxxxxxx"; 
 
     @BindView(R.id.token_menu)
     FloatingActionMenu fabTokenMenu;
