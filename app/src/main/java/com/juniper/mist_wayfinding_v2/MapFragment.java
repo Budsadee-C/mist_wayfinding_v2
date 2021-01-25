@@ -215,8 +215,7 @@ public class MapFragment extends Fragment implements MSTCentralManagerIndoorOnly
         spin = (Spinner) view.findViewById(R.id.spinner_list);
         spin.setVisibility(View.VISIBLE);
         spin.setEnabled(true);
-      //  x_value = (TextView) view.findViewById(R.id.x_value_id);
-
+        
         JsonFectData jsonFectData = new JsonFectData();
         jsonFectData.zone.add("Select Place");
         jsonFectData.zone_vertical_x.add(0.0);
@@ -230,43 +229,8 @@ public class MapFragment extends Fragment implements MSTCentralManagerIndoorOnly
         aa.notifyDataSetChanged();
         initSelectChange(jsonFectData.zone,jsonFectData);
 
-
         return view;
     }
-    /*public void WaydrawLines(ImageView image,float start_x, float start_y, float end_x, float end_y)
-    {
-        BitmapDrawable drawable = (BitmapDrawable) image.getDrawable();
-        Bitmap bitmap = drawable.getBitmap().copy(Bitmap.Config.ARGB_8888, true);
-        Canvas canvas = new Canvas(bitmap);
-        Paint paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setColor(Color.GREEN);
-        paint.setStrokeWidth(8);
-        paint.setStyle(Paint.Style.STROKE);
-
-        canvas.drawLine(start_x,start_y,end_x,end_y,paint); // left,top,right,bottom
-        image.setImageBitmap(bitmap);
-
-    }
-    public void drawZone(ImageView image, ArrayList<Double> x, ArrayList<Double> y)
-    {
-
-        BitmapDrawable drawable = (BitmapDrawable) image.getDrawable();
-        Bitmap bitmap = drawable.getBitmap().copy(Bitmap.Config.ARGB_8888, true);
-        Canvas canvas = new Canvas(bitmap);
-        Paint paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setColor(Color.RED);
-        paint.setStyle(Paint.Style.FILL);
-        paint.setAlpha(60); // transparent
-
-
-
-
-        canvas.drawRect(BigDecimal.valueOf(x.get(0)).floatValue(),BigDecimal.valueOf(y.get(1)).floatValue(),BigDecimal.valueOf(x.get(2)).floatValue(),BigDecimal.valueOf(y.get(3)).floatValue(),paint); // left,top,right,bottom
-        image.setImageBitmap(bitmap);
-
-    }*/
     public void initSelectChange(ArrayList <String> zone_select,JsonFectData jsonFectData)
     {
 
@@ -280,22 +244,12 @@ public class MapFragment extends Fragment implements MSTCentralManagerIndoorOnly
                     index=jsonFectData.CalAround(post);
 
                     if(index!=-1) {
-                        /*System.out.print("Choose zone is: " + zone_select.get(post) + " have point x :");
-                        for (int a = 0; a < jsonFectData.ori_value_x.size(); a++) {
-                            System.out.print(jsonFectData.ori_value_x.get(a) + " ,y: ");
-                            System.out.print(jsonFectData.ori_value_y.get(a) + " ,");
-
-                        }*/
-                        //renderImage(floorPlanImageUrl);
-                        //drawZone(floorPlanImage,jsonFectData.ori_value_x, jsonFectData.ori_value_y);
-
                         removeViewByTagname("Zone");
                         removeViewByTagname("wayfindingpath");
                         removeViewByTagname("show_path_view");
                         removeViewByTagname("snapPathDestinationView");
 
-                        //CreateLine drawZone = new CreateLine(getActivity(),BigDecimal.valueOf(jsonFectData.ori_value_x.get(0)*scaleXFactor).floatValue(),BigDecimal.valueOf(jsonFectData.ori_value_y.get(1)*scaleYFactor).floatValue(),BigDecimal.valueOf(jsonFectData.ori_value_x.get(2)*scaleXFactor).floatValue(),BigDecimal.valueOf(jsonFectData.ori_value_y.get(3)*scaleYFactor).floatValue()); // JNPR
-                        CreateLine drawZone = new CreateLine(getActivity(),BigDecimal.valueOf(jsonFectData.ori_value_x.get(0)*scaleXFactor).floatValue(),BigDecimal.valueOf(jsonFectData.ori_value_y.get(1)*scaleYFactor).floatValue(),BigDecimal.valueOf(jsonFectData.ori_value_x.get(2)*scaleXFactor).floatValue(),BigDecimal.valueOf(jsonFectData.ori_value_y.get(3)*scaleYFactor).floatValue()); // PPLUS
+                        CreateLine drawZone = new CreateLine(getActivity(),BigDecimal.valueOf(jsonFectData.ori_value_x.get(0)*scaleXFactor).floatValue(),BigDecimal.valueOf(jsonFectData.ori_value_y.get(1)*scaleYFactor).floatValue(),BigDecimal.valueOf(jsonFectData.ori_value_x.get(2)*scaleXFactor).floatValue(),BigDecimal.valueOf(jsonFectData.ori_value_y.get(3)*scaleYFactor).floatValue()); // 
                         if (drawZone != null)
                         {
                             drawZone.setTag("Zone");
@@ -309,9 +263,6 @@ public class MapFragment extends Fragment implements MSTCentralManagerIndoorOnly
                         }
                         String startingName = FindWayToDraw.getNearestPositionName(new MSTPoint(BigDecimal.valueOf(mstPoint.getX()).floatValue(),BigDecimal.valueOf(mstPoint.getY()).floatValue()),currentMap);
                         String endingName = FindWayToDraw.getNearestPositionName(new MSTPoint(BigDecimal.valueOf(jsonFectData.node_x.get(index)).floatValue(),BigDecimal.valueOf(jsonFectData.node_y.get(index)).floatValue()),currentMap); //JNPR
-                        //String endingName = FindWayToDraw.getNearestPositionName(new MSTPoint(BigDecimal.valueOf(jsonFectData.node_x.get(index)/currentMap.getPpm()).floatValue(),BigDecimal.valueOf(jsonFectData.node_y.get(index)/currentMap.getPpm()).floatValue()),currentMap); //PPLUS
-
-                       // MSTPoint pointStart = FindWayToDraw.getNearestPosition(startingName);
                         MSTPoint pointEnd = FindWayToDraw.getNearestPosition(endingName);
                         FindWayToDraw.getShowPathList(nodes, scaleXFactor, scaleYFactor, currentMap);
                         FindWayToDraw.drawShowPath(nodes, scaleXFactor, scaleYFactor, currentMap);
