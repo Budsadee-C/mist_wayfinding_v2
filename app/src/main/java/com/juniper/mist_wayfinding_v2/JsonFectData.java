@@ -247,19 +247,5 @@ public class JsonFectData extends AsyncTask<Void, Void, Void> {
         }
         return -1;
     }
-    public int clickSuround(float x ,float y)
-    {
-        for(int i=0;i<node_x.size();i++)
-        {
-            if(min_x_zone<=node_x.get(i)&&max_x_zone>=node_x.get(i))
-            {
-                if(min_y_zone<=node_y.get(i)&&max_y_zone>=node_y.get(i))
-                {
-                    return i;
-                } // this node is in a scope
-            }
-        }
-        return -1;
-    }
 }
 
